@@ -14,8 +14,6 @@ namespace EM.UsingSwagger.Filters
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-
-            CustomAttributeData customAttribute = null;
             var isUnauthorized = context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<SwaggerUnauthorize>().Any() ||
                               context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerUnauthorize>().Any();
             
