@@ -5,9 +5,9 @@ using System.Text;
 namespace EM.UsingSwagger.Attributes.SwaggerAuthorizeAttributes
 {
     [System.AttributeUsage(System.AttributeTargets.All, AllowMultiple = true)]
-    public class SwaggerUnauthorize:Attribute
+    public class SwaggerUnauthorizeAttribute:Attribute
     {
-        public SwaggerUnauthorize()
+        public SwaggerUnauthorizeAttribute()
         {
 
         }

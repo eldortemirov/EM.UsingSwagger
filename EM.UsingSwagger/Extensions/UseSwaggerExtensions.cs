@@ -16,7 +16,7 @@ namespace EM.UsingSwagger.Extensions
         /// <returns></returns>
         public static IApplicationBuilder UseSwaggerByBasicAuth(this IApplicationBuilder app, string versionName = "basicauth")
         {
-            SwaggerBuilderExtensions.UseSwagger(app);
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"/swagger/{versionName}/swagger.json", $".NET Core API with Basic Auth");
@@ -34,7 +34,7 @@ namespace EM.UsingSwagger.Extensions
         /// <returns></returns>
         public static IApplicationBuilder UseSwaggerByJWTToken(this IApplicationBuilder app, string versionName = "jwt")
         {
-            SwaggerBuilderExtensions.UseSwagger(app);
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"/swagger/{versionName}/swagger.json", $".NET Core API with JWT Token");

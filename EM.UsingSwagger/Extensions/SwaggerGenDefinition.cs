@@ -30,6 +30,7 @@ namespace EM.UsingSwagger.Extensions
                 }
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.Bearer);
+                options.SchemaFilter<SwaggerExcludeFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -55,7 +56,7 @@ namespace EM.UsingSwagger.Extensions
                 }
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BasicAuth);
-
+                options.SchemaFilter<SwaggerExcludeFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();

@@ -38,6 +38,16 @@ namespace EM.UsingSwagger.Extensions
         }
 
         /// <summary>
+        /// Подключить Basic Auth ((versionName = "basicauth"))
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="xmlPath"></param>
+        public static void AddSwaggerBasicAuthSecurityDefinitions(this IServiceCollection services, string xmlPath)
+        {
+            SwaggerGenDefinition.SwaggerBasicAuthStartupService(services, xmlPath, null, "basicauth");
+        }
+
+        /// <summary>
         /// Подключить JWT Token
         /// </summary>
         /// <param name="services"></param>
@@ -58,6 +68,16 @@ namespace EM.UsingSwagger.Extensions
         public static void AddSwaggerJWTTokenSecurityDefinitions(this IServiceCollection services, string xmlPath, string versionName = "jwt")
         {
             SwaggerGenDefinition.SwaggerJWTTokenStartupService(services, xmlPath, null, versionName);
+        }
+
+        /// <summary>
+        /// Подключить JWT Token (versionName = "jwt")
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="xmlPath"></param>
+        public static void AddSwaggerJWTTokenSecurityDefinitions(this IServiceCollection services, string xmlPath)
+        {
+            SwaggerGenDefinition.SwaggerJWTTokenStartupService(services, xmlPath, null, "jwt");
         }
     }
 }

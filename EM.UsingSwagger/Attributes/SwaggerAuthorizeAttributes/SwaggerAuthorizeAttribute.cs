@@ -6,10 +6,10 @@ using System.Text;
 namespace EM.UsingSwagger.Attributes.SwaggerAuthorizeAttributes
 {
     [System.AttributeUsage(System.AttributeTargets.All, AllowMultiple = true)]
-    public class SwaggerAuthorize:Attribute
+    public class SwaggerAuthorizeAttribute:Attribute
     {
         public MethodSecurityDefinition MethodSecurity { get; }
-        public SwaggerAuthorize(MethodSecurityDefinition methodSecurity = MethodSecurityDefinition.Bearer)
+        public SwaggerAuthorizeAttribute(MethodSecurityDefinition methodSecurity = MethodSecurityDefinition.Bearer)
         {
             MethodSecurity = methodSecurity;
         }

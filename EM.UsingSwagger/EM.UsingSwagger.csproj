@@ -5,10 +5,12 @@
     <Description>Существует два типа аутентификации: Basic Authentication и JWT Bearer Authentication;
 Существует атрибут SwaggerUnauthorize (SwaggerUnauthorize используется на методе или контроллере, его задача обеспечивает не требование API аутентификации, в методе или методов в контроллере);
 Используйте атрибут SwaggerTag для описания и путь к документации контроллера. Атрибут указан над именами контроллеров;
---------------------------------------------------------------------------------------------------------------------
+Существует SwaggerIgnore игнорирует свойства из swagger для запроса
+-------------------------------------------------------------------------------
 There are two types of authentication: Basic Authentication and JWT Bearer Authentication;
 There is a SwaggerUnauthorize attribute (SwaggerUnauthorize is used on a method or controller, its task does not require an authentication API, in a method or methods in the controller);
-Use the SwaggerTag attribute to describe and the path to the controller documentation. The attribute is indicated above the controller names;</Description>
+Use the SwaggerTag attribute to describe and the path to the controller documentation. The attribute is indicated above the controller names;
+There is a SwaggerIgnore ignores the properties from swagger to request;</Description>
     <PackageProjectUrl>https://github.com/eldortemirov/EM.UsingSwagger</PackageProjectUrl>
     <PackageTags>Swagger, OpenApi</PackageTags>
     <Copyright>June 2020</Copyright>
@@ -16,6 +18,7 @@ Use the SwaggerTag attribute to describe and the path to the controller document
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>E&amp;M - Eldor Temirov</Authors>
     <Company>.Net Developer</Company>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +26,7 @@ Use the SwaggerTag attribute to describe and the path to the controller document
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.0" />
   </ItemGroup>
 
 </Project>
