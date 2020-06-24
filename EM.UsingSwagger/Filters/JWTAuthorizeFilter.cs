@@ -13,8 +13,9 @@ namespace EM.UsingSwagger.Filters
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
 
-            var isUnauthorized = context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<SwaggerUnauthorizeAttribute>().Any() ||
-                              context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerUnauthorizeAttribute>().Any();
+            var isUnauthorized = (context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<SwaggerUnauthorizeAttribute>().Any() ||
+                                  context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerUnauthorizeAttribute>().Any()) &&
+                                 !context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerBasicAuthorizeAttribute>().Any();
 
             if (isUnauthorized) return;
 

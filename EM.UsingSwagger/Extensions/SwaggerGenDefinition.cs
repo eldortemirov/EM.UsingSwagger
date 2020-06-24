@@ -63,6 +63,32 @@ namespace EM.UsingSwagger.Extensions
             });
         }
 
+        internal static void SwaggerJwtWithBasicAuthStartupService(IServiceCollection services, string xmlPath, OpenApiInfo openApiInfo, string versionName)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                if (openApiInfo == null)
+                {
+                    options.SwaggerDoc(versionName, new OpenApiInfo
+                    {
+                        Version = versionName,
+                        Title = ".NET Core API",
+                        Description = "A simple example ASP.NET Core Web API with JWT Token, Basic Auth"
+                    });
+                }
+                else
+                {
+                    options.SwaggerDoc(openApiInfo.Version, openApiInfo);
+                }
+
+                AddSecurityDefinition(options, MethodSecurityDefinition.BearerWithBasic);
+                options.SchemaFilter<SwaggerExcludeFilter>();
+                options.IncludeXmlComments(xmlPath);
+                options.CustomSchemaIds(o => o.FullName);
+                options.EnableAnnotations();
+            });
+        }
+
         private static void AddSecurityDefinition(SwaggerGenOptions options, MethodSecurityDefinition methodSecurity)
         {
             switch (methodSecurity)
@@ -73,8 +99,11 @@ namespace EM.UsingSwagger.Extensions
                 case MethodSecurityDefinition.Bearer:
                     AddSecurityDefinitionBearer(options);
                     break;
+                case MethodSecurityDefinition.BearerWithBasic:
+                    AddSecurityDefinitionBearerWithBasic(options);
+                    break;
                 default:
-                    AddSecurityDefinitionBearer(options);
+                    AddSecurityDefinitionBearerWithBasic(options);
                     break;
             }
         }
@@ -106,6 +135,31 @@ namespace EM.UsingSwagger.Extensions
             });
 
             options.OperationFilter<JWTUnauthorizeFilter>();
+        }
+
+        private static void AddSecurityDefinitionBearerWithBasic(SwaggerGenOptions options)
+        {
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+            });
+
+            options.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.Http,
+                Scheme = "basic",
+                In = ParameterLocation.Header,
+                Description = "Basic Authorization header using the Bearer scheme."
+            });
+
+            options.OperationFilter<JWTUnauthorizeFilter>();
+            options.OperationFilter<SwaggerBasicAuthorizeFilter>();
         }
     }
 }

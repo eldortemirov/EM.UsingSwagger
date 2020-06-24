@@ -15,7 +15,7 @@ namespace EM.UsingSwagger.Extensions
     public static class AddSwaggerExtensions
     {
         /// <summary>
-        /// Подключить Basic Auth
+        /// Подключить Basic Auth (versionName = "basicauth")
         /// </summary>
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
@@ -27,7 +27,7 @@ namespace EM.UsingSwagger.Extensions
         }
 
         /// <summary>
-        /// Подключить Basic Auth
+        /// Подключить Basic Auth (versionName = "basicauth")
         /// </summary>
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
@@ -38,7 +38,7 @@ namespace EM.UsingSwagger.Extensions
         }
 
         /// <summary>
-        /// Подключить Basic Auth ((versionName = "basicauth"))
+        /// Подключить Basic Auth (versionName = "basicauth")
         /// </summary>
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
@@ -48,7 +48,7 @@ namespace EM.UsingSwagger.Extensions
         }
 
         /// <summary>
-        /// Подключить JWT Token
+        /// Подключить JWT Token (versionName = "jwt")
         /// </summary>
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
@@ -60,7 +60,7 @@ namespace EM.UsingSwagger.Extensions
         }
 
         /// <summary>
-        /// Подключить JWT Token
+        /// Подключить JWT Token (versionName = "jwt")
         /// </summary>
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
@@ -78,6 +78,39 @@ namespace EM.UsingSwagger.Extensions
         public static void AddSwaggerJWTTokenSecurityDefinitions(this IServiceCollection services, string xmlPath)
         {
             SwaggerGenDefinition.SwaggerJWTTokenStartupService(services, xmlPath, null, "jwt");
+        }
+
+        /// <summary>
+        /// Подключить JWT Token и Basic Auth (versionName = "jwtbasic")
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="xmlPath"></param>
+        /// <param name="swaggerInfo"></param>
+        /// <param name="versionName"></param>
+        public static void AddSwaggerJwtWithBasicSecurityDefinitions(this IServiceCollection services, string xmlPath, OpenApiInfo swaggerInfo = null, string versionName = "jwtbasic")
+        {
+            SwaggerGenDefinition.SwaggerJwtWithBasicAuthStartupService(services, xmlPath, swaggerInfo, versionName);
+        }
+
+        /// <summary>
+        /// Подключить JWT Token и Basic Auth (versionName = "jwtbasic")
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="xmlPath"></param>
+        /// <param name="versionName"></param>
+        public static void AddSwaggerJwtWithBasicSecurityDefinitions(this IServiceCollection services, string xmlPath, string versionName = "jwtbasic")
+        {
+            SwaggerGenDefinition.SwaggerJwtWithBasicAuthStartupService(services, xmlPath, null, versionName);
+        }
+
+        /// <summary>
+        /// Подключить JWT Token и Basic Auth (versionName = "jwtbasic")
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="xmlPath"></param>
+        public static void AddSwaggerJwtWithBasicSecurityDefinitions(this IServiceCollection services, string xmlPath)
+        {
+            SwaggerGenDefinition.SwaggerJwtWithBasicAuthStartupService(services, xmlPath, null, "jwtbasic");
         }
     }
 }

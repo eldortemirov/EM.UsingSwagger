@@ -43,5 +43,23 @@ namespace EM.UsingSwagger.Extensions
 
             return app;
         }
+
+        /// <summary>
+        /// Использовать JWT authorize и Basic Authorize для Swagger API
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="versionName"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseSwaggerByJwtBasicAuth(this IApplicationBuilder app, string versionName = "jwtbasic")
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint($"/swagger/{versionName}/swagger.json", $".NET Core API with JWT Token, Basic Auth");
+                c.RoutePrefix = "swagger/ui";
+            });
+
+            return app;
+        }
     }
 }

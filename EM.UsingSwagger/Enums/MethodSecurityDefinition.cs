@@ -8,6 +8,6 @@ namespace EM.UsingSwagger.Enums
     {
         BasicAuth,
         Bearer,
-        //OAuth2
+        BearerWithBasic
     }
 }
