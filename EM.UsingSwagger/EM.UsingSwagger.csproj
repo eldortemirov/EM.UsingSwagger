@@ -6,13 +6,13 @@
 Существует атрибут SwaggerUnauthorize (SwaggerUnauthorize используется на методе или контроллере, его задача обеспечивает не требование API аутентификации, в методе или методов в контроллере);
 Используйте атрибут SwaggerTag для описания и путь к документации контроллера. Атрибут указан над именами контроллеров;
 Существует SwaggerIgnore игнорирует свойства из swagger для запроса
-Существует SwaggerAuthorize. Действует при использования методов AddSwaggerAllSecurityDefinitions и UseSwagger;
+Существует SwaggerAuthorize. Действует при использования методов AddSwaggerAllSecurityDefinitions и UseSwaggerAuthorizeUI;
 -------------------------------------------------------------------------------
 There are two types of authentication: Basic Authentication and JWT Bearer Authentication;
 There is a SwaggerUnauthorize attribute (SwaggerUnauthorize is used on a method or controller, its task does not require an authentication API, in a method or methods in the controller);
 Use the SwaggerTag attribute to describe and the path to the controller documentation. The attribute is indicated above the controller names;
 There is a SwaggerIgnore ignores the properties from swagger to request;
-There is a SwaggerAuthorize. Effective when using AddSwaggerAllSecurityDefinitions and UseSwagger methods;</Description>
+There is a SwaggerAuthorize. Effective when using AddSwaggerAllSecurityDefinitions and UseSwaggerAuthorizeUI methods;</Description>
     <PackageProjectUrl>https://github.com/eldortemirov/EM.UsingSwagger</PackageProjectUrl>
     <PackageTags>Swagger, OpenApi</PackageTags>
     <Copyright>June 2020</Copyright>
@@ -20,7 +20,7 @@ There is a SwaggerAuthorize. Effective when using AddSwaggerAllSecurityDefinitio
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>E&amp;M - Eldor Temirov</Authors>
     <Company>.Net Developer</Company>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -31,6 +31,7 @@ namespace EM.UsingSwagger.Extensions
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.Bearer);
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
+                options.OperationFilter<DisplayRelativePathFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -57,6 +58,7 @@ namespace EM.UsingSwagger.Extensions
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BasicAuth);
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
+                options.OperationFilter<DisplayRelativePathFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -83,6 +85,7 @@ namespace EM.UsingSwagger.Extensions
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BearerWithBasic);
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
+                options.OperationFilter<DisplayRelativePathFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();

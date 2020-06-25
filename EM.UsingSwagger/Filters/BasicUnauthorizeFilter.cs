@@ -22,7 +22,7 @@ namespace EM.UsingSwagger.Filters
             if (isUnauthorized) return;
 
             operation.Responses.TryAdd("401", new OpenApiResponse { Description = "Unauthorized" });
-            operation.Responses.TryAdd("403", new OpenApiResponse { Description = "Forbidden" });
+            operation.Responses.TryAdd("403", new OpenApiResponse { Description = "Forbidden",  });
 
             var jwtbearerScheme = new OpenApiSecurityScheme
             {
