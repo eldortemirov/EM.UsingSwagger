@@ -63,7 +63,7 @@ namespace EM.UsingSwagger.Extensions
             });
         }
 
-        internal static void SwaggerJwtWithBasicAuthStartupService(IServiceCollection services, string xmlPath, OpenApiInfo openApiInfo, string versionName)
+        internal static void SwaggerAllSecurityStartupService(IServiceCollection services, string xmlPath, OpenApiInfo openApiInfo, string versionName)
         {
             services.AddSwaggerGen(options =>
             {

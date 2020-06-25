@@ -87,9 +87,9 @@ namespace EM.UsingSwagger.Extensions
         /// <param name="xmlPath"></param>
         /// <param name="swaggerInfo"></param>
         /// <param name="versionName"></param>
-        public static void AddSwaggerJwtWithBasicSecurityDefinitions(this IServiceCollection services, string xmlPath, OpenApiInfo swaggerInfo = null, string versionName = "jwtbasic")
+        public static void AddSwaggerAllSecurityDefinitions(this IServiceCollection services, string xmlPath, OpenApiInfo swaggerInfo = null, string versionName = "jwtbasic")
         {
-            SwaggerGenDefinition.SwaggerJwtWithBasicAuthStartupService(services, xmlPath, swaggerInfo, versionName);
+            SwaggerGenDefinition.SwaggerAllSecurityStartupService(services, xmlPath, swaggerInfo, versionName);
         }
 
         /// <summary>
@@ -98,9 +98,9 @@ namespace EM.UsingSwagger.Extensions
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
         /// <param name="versionName"></param>
-        public static void AddSwaggerJwtWithBasicSecurityDefinitions(this IServiceCollection services, string xmlPath, string versionName = "jwtbasic")
+        public static void AddSwaggerAllSecurityDefinitions(this IServiceCollection services, string xmlPath, string versionName = "jwtbasic")
         {
-            SwaggerGenDefinition.SwaggerJwtWithBasicAuthStartupService(services, xmlPath, null, versionName);
+            SwaggerGenDefinition.SwaggerAllSecurityStartupService(services, xmlPath, null, versionName);
         }
 
         /// <summary>
@@ -108,9 +108,9 @@ namespace EM.UsingSwagger.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <param name="xmlPath"></param>
-        public static void AddSwaggerJwtWithBasicSecurityDefinitions(this IServiceCollection services, string xmlPath)
+        public static void AddSwaggerAllSecurityDefinitions(this IServiceCollection services, string xmlPath)
         {
-            SwaggerGenDefinition.SwaggerJwtWithBasicAuthStartupService(services, xmlPath, null, "jwtbasic");
+            SwaggerGenDefinition.SwaggerAllSecurityStartupService(services, xmlPath, null, "jwtbasic");
         }
     }
 }
