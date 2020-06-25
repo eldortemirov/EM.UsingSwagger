@@ -50,7 +50,7 @@ namespace EM.UsingSwagger.Extensions
         /// <param name="app"></param>
         /// <param name="versionName"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseSwaggerByJwtBasicAuth(this IApplicationBuilder app, string versionName = "jwtbasic")
+        public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, string versionName = "jwtbasic")
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>
