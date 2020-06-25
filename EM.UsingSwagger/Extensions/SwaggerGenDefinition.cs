@@ -30,7 +30,7 @@ namespace EM.UsingSwagger.Extensions
                 }
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.Bearer);
-                options.SchemaFilter<SwaggerExcludeFilter>();
+                options.SchemaFilter<SwaggerExcludePropertyFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -56,7 +56,7 @@ namespace EM.UsingSwagger.Extensions
                 }
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BasicAuth);
-                options.SchemaFilter<SwaggerExcludeFilter>();
+                options.SchemaFilter<SwaggerExcludePropertyFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -82,7 +82,7 @@ namespace EM.UsingSwagger.Extensions
                 }
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BearerWithBasic);
-                options.SchemaFilter<SwaggerExcludeFilter>();
+                options.SchemaFilter<SwaggerExcludePropertyFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -119,7 +119,7 @@ namespace EM.UsingSwagger.Extensions
                 Description = "Basic Authorization header using the Bearer scheme."
             });
 
-            options.OperationFilter<BasicAuthorizeFilter>();
+            options.OperationFilter<BasicUnauthorizeFilter>();
         }
 
         private static void AddSecurityDefinitionBearer(SwaggerGenOptions options)
@@ -159,7 +159,7 @@ namespace EM.UsingSwagger.Extensions
             });
 
             options.OperationFilter<JWTUnauthorizeFilter>();
-            options.OperationFilter<SwaggerBasicAuthorizeFilter>();
+            options.OperationFilter<SwaggerAuthorizeFilter>();
         }
     }
 }

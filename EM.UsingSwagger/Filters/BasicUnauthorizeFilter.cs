@@ -1,21 +1,23 @@
 ﻿using EM.UsingSwagger.Attributes.SwaggerAuthorizeAttributes;
+using EM.UsingSwagger.Enums;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace EM.UsingSwagger.Filters
 {
-    public class JWTUnauthorizeFilter : IOperationFilter
+    public class BasicUnauthorizeFilter : IOperationFilter
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-
             var isUnauthorized = (context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<SwaggerUnauthorizeAttribute>().Any() ||
                                   context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerUnauthorizeAttribute>().Any()) &&
-                                 !context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerBasicAuthorizeAttribute>().Any();
+                                 !context.MethodInfo.GetCustomAttributes(true).OfType<SwaggerAuthorizeAttribute>().Any();
+
 
             if (isUnauthorized) return;
 
@@ -24,16 +26,16 @@ namespace EM.UsingSwagger.Filters
 
             var jwtbearerScheme = new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basic" }
             };
 
             operation.Security = new List<OpenApiSecurityRequirement>
+            {
+                new OpenApiSecurityRequirement
                 {
-                    new OpenApiSecurityRequirement
-                    {
-                        [ jwtbearerScheme ] = new string [] { }
-                    }
-                };
+                    [ jwtbearerScheme ] = new string [] { }
+                }
+            };
         }
     }
 }

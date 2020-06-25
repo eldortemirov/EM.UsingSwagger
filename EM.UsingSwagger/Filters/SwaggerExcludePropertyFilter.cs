@@ -11,7 +11,7 @@ using System.Text;
 
 namespace EM.UsingSwagger.Filters
 {
-    public class SwaggerExcludeFilter : ISchemaFilter
+    public class SwaggerExcludePropertyFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext schemaFilterContext)
         {
