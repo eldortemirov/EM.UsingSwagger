@@ -3,6 +3,7 @@ using EM.UsingSwagger.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Examples;
+using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace EM.UsingSwagger.Extensions
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
                 options.OperationFilter<ExamplesOperationFilter>();
                 options.OperationFilter<DisplayRelativePathFilter>();
+                options.ExampleFilters();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -62,6 +64,7 @@ namespace EM.UsingSwagger.Extensions
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
                 options.OperationFilter<ExamplesOperationFilter>();
                 options.OperationFilter<DisplayRelativePathFilter>();
+                options.ExampleFilters();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -90,6 +93,7 @@ namespace EM.UsingSwagger.Extensions
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
                 options.OperationFilter<ExamplesOperationFilter>();
                 options.OperationFilter<DisplayRelativePathFilter>();
+                options.ExampleFilters();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
