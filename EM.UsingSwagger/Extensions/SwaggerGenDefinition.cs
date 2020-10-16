@@ -2,7 +2,6 @@
 using EM.UsingSwagger.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Examples;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
@@ -15,6 +14,7 @@ namespace EM.UsingSwagger.Extensions
     {
         internal static void SwaggerJWTTokenStartupService(IServiceCollection services, string xmlPath, OpenApiInfo openApiInfo, string versionName)
         {
+            services.AddSwaggerExamples();
             services.AddSwaggerGen(options =>
             {
                 if (openApiInfo == null)
@@ -32,10 +32,10 @@ namespace EM.UsingSwagger.Extensions
                 }
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.Bearer);
-                options.SchemaFilter<SwaggerExcludePropertyFilter>();
-                options.OperationFilter<ExamplesOperationFilter>();
-                options.OperationFilter<DisplayRelativePathFilter>();
                 options.ExampleFilters();
+                options.SchemaFilter<SwaggerExcludePropertyFilter>();
+                //options.OperationFilter<ExamplesOperationFilter>();
+                options.OperationFilter<DisplayRelativePathFilter>();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -44,6 +44,7 @@ namespace EM.UsingSwagger.Extensions
 
         internal static void SwaggerBasicAuthStartupService(IServiceCollection services, string xmlPath, OpenApiInfo openApiInfo, string versionName)
         {
+            services.AddSwaggerExamples();
             services.AddSwaggerGen(options =>
             {
                 if (openApiInfo == null)
@@ -62,9 +63,8 @@ namespace EM.UsingSwagger.Extensions
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BasicAuth);
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
-                options.OperationFilter<ExamplesOperationFilter>();
+                //options.OperationFilter<ExamplesOperationFilter>();
                 options.OperationFilter<DisplayRelativePathFilter>();
-                options.ExampleFilters();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -73,6 +73,7 @@ namespace EM.UsingSwagger.Extensions
 
         internal static void SwaggerAllSecurityStartupService(IServiceCollection services, string xmlPath, OpenApiInfo openApiInfo, string versionName)
         {
+            services.AddSwaggerExamples();
             services.AddSwaggerGen(options =>
             {
                 if (openApiInfo == null)
@@ -91,9 +92,8 @@ namespace EM.UsingSwagger.Extensions
 
                 AddSecurityDefinition(options, MethodSecurityDefinition.BearerWithBasic);
                 options.SchemaFilter<SwaggerExcludePropertyFilter>();
-                options.OperationFilter<ExamplesOperationFilter>();
+                //options.OperationFilter<ExamplesOperationFilter>();
                 options.OperationFilter<DisplayRelativePathFilter>();
-                options.ExampleFilters();
                 options.IncludeXmlComments(xmlPath);
                 options.CustomSchemaIds(o => o.FullName);
                 options.EnableAnnotations();
@@ -130,6 +130,7 @@ namespace EM.UsingSwagger.Extensions
                 Description = "Basic Authorization header using the Bearer scheme."
             });
 
+            options.ExampleFilters();
             options.OperationFilter<BasicUnauthorizeFilter>();
         }
 
@@ -145,6 +146,7 @@ namespace EM.UsingSwagger.Extensions
                 Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
             });
 
+            options.ExampleFilters();
             options.OperationFilter<JWTUnauthorizeFilter>();
         }
 
@@ -169,6 +171,7 @@ namespace EM.UsingSwagger.Extensions
                 Description = "Basic Authorization header using the Bearer scheme."
             });
 
+            options.ExampleFilters();
             options.OperationFilter<JWTUnauthorizeFilter>();
             options.OperationFilter<SwaggerAuthorizeFilter>();
         }
