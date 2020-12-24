@@ -34,6 +34,23 @@ namespace EM.UsingSwagger.Filters
                                               ?.PropertyName
                                               ?? m.Name.ToCamelCase()));
 
+            foreach (KeyValuePair<string, OpenApiSchema> property in schema.Properties)
+            {
+
+                // Only assign default value to the proper element.
+                if ("testInt" == property.Key)
+                {
+                    property.Value.Example = OpenApiAnyFactory.CreateFor(property.Value, 555);
+                    break;
+                }
+
+                if ("testFloat" == property.Key)
+                {
+                    property.Value.Example = OpenApiAnyFactory.CreateFor(property.Value, 1111);
+                    break;
+                }
+            }
+
             foreach (var excludedName in excludedList)
             {
                 if (schema.Properties.ContainsKey(excludedName))
