@@ -19,22 +19,6 @@ namespace EM.UsingSwagger.Filters
             if (schema.Properties.Count == 0)
                 return;
 
-            //const BindingFlags bindingFlags = BindingFlags.Public |
-            //                                  BindingFlags.NonPublic |
-            //                                  BindingFlags.Instance;
-            //var memberList = schemaFilterContext.Type
-            //                    .GetFields(bindingFlags).Cast<MemberInfo>()
-            //                    .Concat(schemaFilterContext.Type
-            //                    .GetProperties(bindingFlags));
-
-            //var excludedList = memberList.Where(m =>
-            //                                    m.GetCustomAttribute<SwaggerDefaultValueAttribute>()
-            //                                    != null)
-            //                             .Select(m =>
-            //                                 (m.GetCustomAttribute<JsonPropertyAttribute>()
-            //                                  ?.PropertyName
-            //                                  ?? m.Name.ToCamelCase()));
-
             foreach (PropertyInfo propertyInfo in schemaFilterContext.Type.GetProperties())
             {
                 SwaggerDefaultValueAttribute defaultAttribute = propertyInfo
